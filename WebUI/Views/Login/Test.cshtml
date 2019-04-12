@@ -1,0 +1,13 @@
+﻿@{ 
+
+
+    var urlPath = HttpContext.Current.Request.UrlReferrer == null ? HttpContext.Current.Request.Url.AbsolutePath : HttpContext.Current.Request.UrlReferrer.AbsolutePath;
+
+
+
+
+
+}
+
+
+@Html.Raw(urlPath)

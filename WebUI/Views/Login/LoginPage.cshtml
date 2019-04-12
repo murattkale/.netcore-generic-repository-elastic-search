@@ -1,0 +1,302 @@
+﻿@{
+    /**/
+
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="tr">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@SessionRequest.Title</title>
+    <link rel="shortcut icon" href="Content/img/favicon.ico" />
+
+    <base id="baseUrl" href='@Url.Content("~")'>
+    <script type="text/javascript">
+        var baseUrl ="@SessionRequest.baseUrl";
+    </script>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="@SessionRequest.baseUrl/assets/global/css/css.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link href="@SessionRequest.baseUrl/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@SessionRequest.baseUrl/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="@SessionRequest.baseUrl/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="@SessionRequest.baseUrl/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="@SessionRequest.baseUrl/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="@SessionRequest.baseUrl/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="@SessionRequest.baseUrl/assets/pages/css/login-5.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="Content/css/general.css?v=@SessionRequest.StyleVersion" rel="stylesheet" />
+
+
+
+</head>
+<!-- END HEAD -->
+
+<body class="login">
+    <!-- BEGIN : LOGIN PAGE 5-1 -->
+    <div class="user-login-5">
+        <div class="row bs-reset">
+            <div class="col-md-6 bs-reset mt-login-5-bsfix">
+                <div class="login-bg">
+                    <img style="position: inherit; margin: 0px; padding: 0px; border: none; width: 100%; height: 100%; max-height: none; max-width: none; z-index: -999999; left: 0px; margin-top:190px;" class="login-logo" src="Content/img/logo.png" />
+                </div>
+            </div>
+            <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+                <div class="login-content">
+                    <h1>@SessionRequest.Title</h1>
+                    <form class="login-form">
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button>
+                            <span>User Name Password Enter</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="@Html.Raw("User Name".Trans())" name="username" required />
+                            </div>
+                            <div class="col-xs-6">
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="@Html.Raw("Password".Trans())" name="password" required />
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12 text-right">
+                                <select style="margin-right:10px;" id="drpUserLanguage" name="drpUserLanguage"></select>
+                                <button class="btn green" type="submit">@Html.Raw("Login".Trans())</button>
+                                <hr />
+                                <a href="User/InsertOrUpdatePage" data-target="#ajax" data-toggle="modal">
+                                    <i class="icon-user"></i>  @Html.Raw("Register".Trans())
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="copyright font-blue-dark">
+                            @Html.Raw(SessionRequest.Copyright)
+                            <hr>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="ajax" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="@SessionRequest.baseUrl/assets/global/img/loading-spinner-grey.gif" alt="" class="loading">
+                    <span> &nbsp;&nbsp;@Html.Raw("Loading".Trans())... </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END : LOGIN PAGE 5-1 -->
+    <!--[if lt IE 9]>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/respond.min.js"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/excanvas.min.js"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/ie8.fix.min.js"></script>
+    <![endif]-->
+
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- END THEME LAYOUT STYLES -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="Content/js/app.min.js?v=@SessionRequest.StyleVersion" type="text/javascript"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+
+    <script src="@SessionRequest.baseUrl/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+
+    <script src="Content/js/general.js?v=@SessionRequest.StyleVersion"></script>
+    <script src="Content/js/model.js?v=@SessionRequest.StyleVersion"></script>
+
+    <script>
+        var Login = function () {
+            var handleLogin = function () {
+                var langList = [];
+                langList.push({ Id: "1", LanguageName: "EN" });
+                langList.push({ Id: "2", LanguageName: "TR" });
+                drpUserLanguage.setSelect(langList, "Id", "LanguageName", "TR", "");
+
+                //loadingdiv.show();
+                //ajax("Login/GetAllLanguage", null,function (dataResult) {
+                //    drpUserLanguage.setSelect(dataResult.Result, "Id", "LanguageName", "EN", "");
+                //    loadingdiv.hide();
+                //}, function () { loadingdiv.hide(); });
+
+                $('.login-form').validate({
+                    errorElement: 'span', //default input error message container
+                    errorClass: 'help-block', // default input error message class
+                    focusInvalid: false, // do not focus the last invalid input
+                    ignore: ":hidden",
+                    rules: {
+                        username: {
+                            required: true
+                        },
+                        password: {
+                            required: true
+                        },
+                        remember: {
+                            required: false
+                        }
+                    },
+
+                    messages: {
+                        username: {
+                            required: "Username is required."
+                        },
+                        password: {
+                            required: "Password is required."
+                        }
+                    },
+
+                    invalidHandler: function (event, validator) { //display error alert on form submit
+                        $('.alert-danger', $('.login-form')).show();
+                    },
+
+                    highlight: function (element) { // hightlight error inputs
+                        $(element)
+                            .closest('.form-group').addClass('has-error'); // set error class to the control group
+                    },
+
+                    success: function (label) {
+                        label.closest('.form-group').removeClass('has-error');
+                        label.remove();
+                    },
+
+                    errorPlacement: function (error, element) {
+                        error.insertAfter(element.closest('.input-icon'));
+                    },
+
+                    submitHandler: function (form) {
+                        setlogin();
+                        return false;
+
+                    }
+                });
+
+                $('.login-form input').keypress(function (e) {
+                    if (e.which == 13) {
+                        if ($('.login-form').validate().form()) {
+                            setlogin();
+                        }
+                        return false;
+                    }
+                });
+
+                $('.forget-form input').keypress(function (e) {
+                    if (e.which == 13) {
+                        if ($('.forget-form').validate().form()) {
+                            setlogin();
+
+                        }
+                        return false;
+                    }
+                });
+            }
+
+            return {
+                //main function to initiate the module
+                init: function () {
+
+                    handleLogin();
+
+                    //$('.login-bg').backstretch([
+                    //    //"Content/referandum/1.jpg",
+                    //    "Content/referandum/2.jpg",
+                    //    "Content/referandum/3.jpg"
+                    //], {
+                    //    fade: 1000,
+                    //    duration: 2000
+                    //}
+                    //);
+                    //$('.backstretch').addClass("loginCustom");
+
+                    $('.forget-form').hide();
+
+                }
+
+            };
+
+        }();
+
+        function setlogin() {
+            var model = {
+                username: $("[name='username']").val(),
+                pass: $("[name='password']").val(),
+                UserLanguageId: $("[name='drpUserLanguage']").val()
+            };
+            loadingdiv.show();
+            ajax("Login/Login", model, function (dataResult) {
+
+                loadingdiv.hide();
+
+                if (dataResult.RedirectUrl) {
+                    window.location = dataResult.RedirectUrl;
+                }
+                else {
+                    var dialog = bootbox.dialog({
+                        message: lang.LoginResultMessage + " " + lang.User
+                    });
+                }
+
+
+                if (dialog) {
+                    dialog.init(function () {
+                        setTimeout(function () {
+                            dialog.modal('hide');
+                        }, 1650);
+                    });
+
+                }
+
+
+            }, function () { loadingdiv.hide(); });
+
+        }
+
+        $(function () {
+            Login.init();
+        });
+    </script>
+
+
+</body>
+
+
+</html>

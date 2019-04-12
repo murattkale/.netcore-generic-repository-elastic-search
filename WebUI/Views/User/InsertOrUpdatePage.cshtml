@@ -1,0 +1,175 @@
+﻿@{
+    Layout = null; string pageTitle = "User".Trans();
+    string User_ControlNameUrl = "User";
+    string FormName = "frm_" + User_ControlNameUrl + "_";
+    int User_idUrl = HttpContext.Request["id"].ToInt();
+    string title = User_idUrl > 0 ? (pageTitle + " Düzenle".Trans()) : (pageTitle + " Kaydet".Trans());
+
+}
+
+<div class="portlet box green">
+    <div class="portlet-title">
+        <button type="button" class="closes" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="caption">
+            <i class="fa fa-gift"></i>
+            @Html.Raw(pageTitle)
+        </div>
+    </div>
+    <div class="portlet-body form">
+
+        <form name="@FormName" id="@FormName">
+            <div class="form-horizontal">
+                <input type="hidden" id="Id" name="Id" />
+                <input type="hidden" id="CreaDate" name="CreaDate" />
+                <input type="hidden" id="ModDate" name="ModDate" />
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="drpCity">@Html.Raw("City".Trans())</label>
+                    <div class="col-md-12">
+                        <select required id="drpCity" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="drpTown">@Html.Raw("Town".Trans())</label>
+                    <div class="col-md-12">
+                        <select required id="drpTown" class="form-control"></select>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="Name">@Html.Raw("Name".Trans())</label>
+                    <div class="col-md-11">
+                        <input required id="Name" name="Name" placeholder="@Html.Raw("Name".Trans())" class="form-control" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="SurName">@Html.Raw("SurName".Trans())</label>
+                    <div class="col-md-11">
+                        <input required id="SurName" name="SurName" placeholder="@Html.Raw("SurName".Trans())" class="form-control" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="EMail">@Html.Raw("EMail".Trans())</label>
+                    <div class="col-md-11">
+                        <input required id="EMail" name="EMail" placeholder="@Html.Raw("EMail".Trans())" class="form-control" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="Password">@Html.Raw("Password".Trans())</label>
+                    <div class="col-md-11">
+                        <input required id="Password" name="Password" placeholder="@Html.Raw("Password".Trans())" class="form-control" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="ChangePassword">@Html.Raw("ChangePassword".Trans())</label>
+                    <div class="col-md-11">
+                        <input required id="ChangePassword" name="ChangePassword" placeholder="@Html.Raw("ChangePassword".Trans())" class="form-control" type="text">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-9 col-md-9">
+                        <input id="btnOK" type="submit" value="@title" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+        var User_FormName = "@Html.Raw(FormName)";
+        var User_ControlNameUrl = "@User_ControlNameUrl";
+        var User_idUrl = @User_idUrl;
+</script>
+
+<script type="text/javascript">
+    var User_EditFunc;
+    $(function () {
+        User_EditFunc = {
+            load: function () {
+                User_EditFunc.get(User_idUrl);
+
+                $('#' + User_FormName).submit(function (e) {
+                    e.preventDefault();
+                    var postModel = toForm("#" + User_FormName);
+
+                    loadingdiv.show();
+                    ajax(User_ControlNameUrl + "/InsertOrUpdate", { postModel: postModel }, function (resultModel) {
+                        if (resultModel) {
+                            User_ListFunc.get();
+                            $("#ajax button.closes").click();
+                        }
+                        else {
+
+                        }
+                        loadingdiv.hide();
+                    }, function () { location.reload(); });
+
+                });
+
+
+            },
+            getCity: function () {
+                ajax("City/getPage", null, function (dataResult) {
+                    drpCity.setSelect(dataResult, "Id", "Name", '', '');
+
+                    User_EditFunc.getTown();
+
+                }, function () { });
+            },
+
+            getTown: function () {
+                ajax("Town/getPage", { CityId: $("#drpCityId").val()}, function (dataResult) {
+                    drpTown.setSelect(dataResult, "Id", "Name", '', '');
+
+
+                }, function () { });
+            },
+
+            get: function (id) {
+                if (id > 0) {
+                    ajax(User_ControlNameUrl + "/Get", { id: id }, function (dataResult) {
+                        if (dataResult) {
+                            for (var itemRow in dataResult) {
+                                var rowValue = "";
+                                if (dataResult.hasOwnProperty(itemRow))
+                                    rowValue = dataResult[itemRow];
+
+                                if (itemRow == "CreaDate" || itemRow == "ModDate") {
+                                    $("#" + User_FormName + " #" + itemRow).val(toDate(rowValue, "."));
+                                }
+                                else {
+                                    $("#" + User_FormName + " #" + itemRow).val(rowValue);
+
+                                }
+
+                            }
+
+                        }
+
+                    }, function () { });
+                }
+            },
+
+
+        };
+        User_EditFunc.load();
+    });
+
+</script>
+<script src="Content/js/inputJs.js"></script>

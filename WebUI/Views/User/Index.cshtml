@@ -1,0 +1,125 @@
+﻿
+@{
+    string pageTitle = "Users".Trans();
+    string UserList_ControlNameUrl = "User";
+}
+
+
+
+<div class="page-content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <button type="button" class="closes" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="caption">
+                        <i class="fa fa-globe"></i> @pageTitle
+
+                        <a class="btn btn-success" href="@UserList_ControlNameUrl/InsertOrUpdatePage" data-target="#ajax" data-toggle="modal">
+                            <i class="fa fa-plus"></i>
+                            @Html.Raw(pageTitle + " " + "Insert".Trans())
+                        </a>
+
+                        <div class="tools"> </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-horizontal">
+
+                        <div id="dt_@UserList_ControlNameUrl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var UserList_ControlNameUrl = "@UserList_ControlNameUrl";
+    var UserList_dtTable = "@Html.Raw("#dt_"+ UserList_ControlNameUrl)";
+</script>
+
+<script type="text/javascript">
+    var User_ListFunc;
+    $(function () {
+        User_ListFunc = {
+            load: function () {
+                User_ListFunc.get();
+            },
+
+            get: function (Durum) {
+
+                ajax(UserList_ControlNameUrl + "/GetPage", null, User_ListFunc.set, function () { });
+            },
+
+            set: function (resultData, item) {
+                $(UserList_dtTable).html('<table class="table table-striped table-bordered table-hover dataTable no-footer full"><tbody></tbody></table>');
+                var tableStr = "";
+                $.each(resultData.Result, function (i, item) {
+
+                    var editdeleteStr = '<a class="btn yellow btn-outline sbold" href ="' + UserList_ControlNameUrl + '/InsertOrUpdatePage?id=' + item.Id + '" data-target="#ajax" data-toggle="modal" > ' + lang.Edit + ' </a > ';
+
+                    tableStr += '<tr >';
+
+                    tableStr += '<td>' + toStr(item.Name) + '</td>';
+                    tableStr += '<td>' + toStr(item.SurName) + '</td>';
+                    tableStr += '<td>' + toStr(item.EMail) + '</td>';
+
+
+                    tableStr += '<td>' + toStr(toDate(toStr(item.CreaDate), "/")) + '</td>';
+                    tableStr += '<td>' + toStr(toDate(toStr(item.ModDate), "/")) + '</td>';
+                    tableStr += '<td>' + editdeleteStr + '</td>';
+
+                    tableStr += '</tr>';
+                });
+
+                $(UserList_dtTable + " table tbody").append(tableStr);
+
+                var col = [
+                    "Name",
+                    "SurName",
+                    "EMail",
+
+                    "Aktif/Pasif",
+                    "Eklenme Tarihi",
+                    "Duzenlenme Tarihi",
+                    "İşlem"
+                ];
+
+                dtTable(col, UserList_dtTable);
+
+                $(UserList_dtTable + ' .btndelete' + UserList_ControlNameUrl).click(function () {
+                    var deleteid = $(this).attr("deleteid");
+                    alerts("Will deleted ?", "yesno", function (result) {
+                        if (result == true) {
+                            loadingdiv.show();
+                            ajax(UserList_ControlNameUrl + "/Delete", { id: deleteid }, function (resultData) {
+                                User_ListFunc.get();
+                                if (resultData) {
+                                    if (resultData.ResultRow && resultData.ResultRow.Tombstone) {
+                                        bootbox.alert("Deleted");
+                                    }
+                                    else {
+                                        bootbox.alert("Deleted Error");
+                                    }
+                                }
+                                loadingdiv.hide();
+                            });
+                        }
+                    });
+                });
+
+
+                loadingdiv.hide();
+            },
+
+        }
+        User_ListFunc.load();
+
+    });
+
+
+</script>

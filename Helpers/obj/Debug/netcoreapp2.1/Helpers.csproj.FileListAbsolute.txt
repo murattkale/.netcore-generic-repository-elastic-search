@@ -1,0 +1,8 @@
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\bin\Debug\netcoreapp2.1\Helpers.deps.json
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\bin\Debug\netcoreapp2.1\Helpers.dll
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\obj\Debug\netcoreapp2.1\Helpers.csproj.CoreCompileInputs.cache
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\obj\Debug\netcoreapp2.1\Helpers.AssemblyInfoInputs.cache
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\obj\Debug\netcoreapp2.1\Helpers.AssemblyInfo.cs
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\bin\Debug\netcoreapp2.1\Helpers.pdb
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\obj\Debug\netcoreapp2.1\Helpers.dll
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\Helpers\obj\Debug\netcoreapp2.1\Helpers.pdb

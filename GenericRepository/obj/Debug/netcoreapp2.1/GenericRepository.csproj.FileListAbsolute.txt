@@ -1,0 +1,12 @@
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\bin\Debug\netcoreapp2.1\GenericRepository.deps.json
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\bin\Debug\netcoreapp2.1\GenericRepository.dll
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\bin\Debug\netcoreapp2.1\GenericRepository.pdb
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\bin\Debug\netcoreapp2.1\Entity.dll
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\bin\Debug\netcoreapp2.1\Entity.pdb
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.csprojAssemblyReference.cache
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.csproj.CoreCompileInputs.cache
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.AssemblyInfoInputs.cache
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.AssemblyInfo.cs
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.csproj.CopyComplete
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.dll
+C:\Users\DeryaErsöz\source\repos\CoreSolutionDemo\GenericRepository\obj\Debug\netcoreapp2.1\GenericRepository.pdb
